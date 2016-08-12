@@ -7,13 +7,10 @@ var content = $('#asImportText').val();
 var contentType = $.cTypeDetect(content);
 if ( 'json' === contentType )
 {
-
   try {
-    vo = Postman.convert($.parseJSON(content));
-
-    dd(vo, '解析后的对象');
-
-    render(vo);
+    vo = Postman.convert($.parseJSON(content), script_id);
+    render(vo, true);
+    $(fileImportNode).ymodal('close');
   }
   catch(e)
   {
